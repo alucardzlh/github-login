@@ -35,7 +35,6 @@ app.get('/api/oauth/authorize', async (c) => {
 		return c.json({ error: 'redirect url not valid, see ' });
 	}
 	const env = c.env as Record<string, string>;
-	console.log(env, 'env');
 	const { GITHUB_CLIENT_ID } = env;
 	const headers = c.req.header();
 	const proto = headers['x-forwarded-proto'] || 'http';
