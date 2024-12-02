@@ -4,15 +4,16 @@
 
 # 如何使用
 
-首先你需要使用urodele创建一个站点，然后向该项目创建一个PR，将你的博客域名增加到white_list中
+首先你需要使用urodele创建一个站点，然后向该项目创建一个PR，将你的博客域名 https://YOUR_NAME.github.io 增加到white_list中
 
 PR通过后，在你的博客仓库urodele.config.ts中，填入如下配置：
 ```typescript
 export const config = {
   github: {
     // ... other options
-    logInUrl: "https://github-login.link-ai.workers.dev?redirect_uri=https://glink25.github.io/login",
-    logInAuthUrl: "https://github-login.link-ai.workers.dev/",
+    logInUrl:
+      "https://github-login.link-ai.workers.dev/api/oauth/authorize?redirect_uri=https://YOUR_NAME.github.io/login",
+    logInAuthUrl: "https://github-login.link-ai.workers.dev/api/oauth/token",
   },
   // ... other options
 }

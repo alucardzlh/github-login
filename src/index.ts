@@ -2,7 +2,6 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 
 import { decodeState, encodeState } from './lib/state';
-import { generateAESPassword } from './lib/encryption';
 import WHITE_LIST from './white_list';
 
 const app = new Hono();
@@ -20,7 +19,7 @@ const GITHUB_OAUTH_AUTHORIZE_URL = 'https://github.com/login/oauth/authorize';
 // });
 
 const isValidRedirect = (url: string) => {
-	return WHITE_LIST.some((v) => v.startsWith(url));
+	return WHITE_LIST.some((v) => url.startsWith(v));
 };
 
 app.use('/*', cors());
@@ -60,7 +59,7 @@ app.get('/api/oauth/authorized', async (c) => {
 		return c.json({ error: err.message });
 	}
 
-	if (isValidRedirect(appReturnUrl)) {
+	if (!isValidRedirect(appReturnUrl)) {
 		c.status(400);
 		return c.json({ error: 'redirect url not valid, see ' });
 	}
