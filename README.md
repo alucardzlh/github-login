@@ -4,7 +4,11 @@
 
 # 如何使用
 
-首先你需要使用urodele创建一个站点，然后向该项目创建一个PR，将你的博客域名 https://YOUR_NAME.github.io 增加到white_list中
+如果你想要创建私有的Github App来登录，可以fork本仓库，或者通过阅读这篇文章来了解如何使用CloudFlare来部署本项目
+
+~~首先你需要使用urodele创建一个站点，然后向该项目创建一个PR，将你的博客域名 https://YOUR_NAME.github.io 增加到white_list中~~
+
+> 处于安全考虑，暂不支持新增white_list，需要自己fork项目并使用cloudflare部署
 
 PR通过后，在你的博客仓库urodele.config.ts中，填入如下配置：
 ```typescript
@@ -21,4 +25,4 @@ export const config = {
 
 之后即可在自己博客站点中使用Github App方式登录
 
-如果你想要创建私有的Github App来登录，你也可以fork本仓库，或者通过阅读这篇文章来了解如何自定义App登录链接
+> 如果要启用Urodele编辑功能，需要手动安装自己的Github App来授予特定仓库的编辑权限
