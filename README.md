@@ -4,7 +4,7 @@
 
 # 如何使用
 
-如果你想要创建私有的Github App来登录，可以fork本仓库，或者通过阅读这篇文章来了解如何使用CloudFlare来部署本项目
+如果你想要创建私有的Github App来登录，可以fork本仓库，或者通过阅读[这篇文章](https://glink25.github.io/post/CloudFlare-Workers%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8%E6%94%BB%E7%95%A5/)来了解如何使用CloudFlare来部署本项目
 
 ~~首先你需要使用urodele创建一个站点，然后向该项目创建一个PR，将你的博客域名 https://YOUR_NAME.github.io 增加到white_list中~~
 
