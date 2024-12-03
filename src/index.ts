@@ -17,7 +17,8 @@ const GITHUB_OAUTH_AUTHORIZE_URL = 'https://github.com/login/oauth/authorize';
 // 	console.log('new password:', password);
 // 	return c.text('Hello Hono!');
 // });
-
+const INVALID_REDIRECT_MSG =
+	'redirect url not valid, see https://github.com/glink25/github-login?tab=readme-ov-file#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8';
 const isValidRedirect = (url: string) => {
 	return WHITE_LIST.some((v) => url.startsWith(v));
 };
@@ -32,7 +33,7 @@ app.get('/api/oauth/authorize', async (c) => {
 	}
 	if (!isValidRedirect(appReturnUrl)) {
 		c.status(400);
-		return c.json({ error: 'redirect url not valid, see ' });
+		return c.json({ error: INVALID_REDIRECT_MSG });
 	}
 	const env = c.env as Record<string, string>;
 	const { GITHUB_CLIENT_ID } = env;
@@ -60,7 +61,7 @@ app.get('/api/oauth/authorized', async (c) => {
 
 	if (!isValidRedirect(appReturnUrl)) {
 		c.status(400);
-		return c.json({ error: 'redirect url not valid, see ' });
+		return c.json({ error: INVALID_REDIRECT_MSG });
 	}
 	const returnUrl = new URL(appReturnUrl);
 
